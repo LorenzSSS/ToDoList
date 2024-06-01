@@ -17,10 +17,10 @@ li:first-child {
     margin-top: 32px;
 }
 
-.input__text_1{
+.input__text{
     width: 16px;
     height: 16px;
-    
+    cursor: pointer;
 }
 
 .checkbox__input{
@@ -40,8 +40,8 @@ li:first-child {
 .btn_x{
     border: none;
     background: none;
-    width: 16px;
-    height: 16px;
+    padding: 0px;
+    cursor: pointer;
 }
 
 .check ~ .checkbox__label{

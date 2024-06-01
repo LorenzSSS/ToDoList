@@ -13,7 +13,7 @@ btnDeleteComplete.addEventListener('click', function(){
 });
 
 form.addEventListener('submit', function(event){
-    event.preventDefault(); // Отменяем дефолтное поведение. Отменить перезагрузку страницы для формы
+    event.preventDefault(); //Отменяем дефолтное поведение. Отменить перезагрузку страницы для формы
     if(input.value) {
         let id = new Date
         id = id.getTime()
@@ -33,7 +33,7 @@ function addTask(text, id, isDone) {
     let task = document.createElement('li');
     task.innerHTML = `
     <div class="checkbox__input">
-    <input class="input__text_1 ${(isDone) ? 'check' : ''}" id="${id}"type="checkbox" ${(isDone) ? 'checked' : ''}> 
+    <input class="input__text ${(isDone) ? 'check' : ''}" id="${id}"type="checkbox" ${(isDone) ? 'checked' : ''}> 
     <label class="checkbox__label" for="${id}">
         ${text}
     </label> 
@@ -48,13 +48,13 @@ function addTask(text, id, isDone) {
     localStorage.setItem('id', 'task');
 }
 
-// Удаляет красный крестик
+//Удаляет красный крестик
 function deleteTask(task){
     let close = task.querySelector('.btn_x');
     close.addEventListener('click', function(){
-        let id = task.querySelector('.input__text_1').id;
+        let id = task.querySelector('.input__text').id;
         localArr = localArr.filter(el => el.idTask !== +id); // + id превращает из строки в число 
-        localStorage.setItem('toDoList', JSON.stringify(localArr)); // Перезапись localStorage
+        localStorage.setItem('toDoList', JSON.stringify(localArr)); //Перезапись localStorage
         task.remove()
         if(localArr.length < 1) {
             blockEnd.classList.add('d-none');
@@ -62,10 +62,10 @@ function deleteTask(task){
     });
 }
 
-// Меняем статус задачи сделано - не сделано
+//Меняем статус задачи сделано - не сделано
 function checkTask(task){
-    let check = task.querySelector('.input__text_1');
-    let id = task.querySelector('.input__text_1').id;
+    let check = task.querySelector('.input__text');
+    let id = task.querySelector('.input__text').id;
     let test = localArr.find(el => el.idTask == +id); // + id превращает из строки в число
     check.addEventListener('click', function(){
         check.classList.toggle('check'); // Добавляем класс check ( это перечёркивание текста )
